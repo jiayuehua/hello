@@ -1,5 +1,6 @@
 [*]
 end_of_line = lf
+						i
 
 [*.xml]
 indent_style = space

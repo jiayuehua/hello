@@ -258,4 +258,18 @@ paket-files/
 
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
-*.pyc
+*.pyc.
+
+assert_linux
+assert_linux_release
+C++17
+CodeGraphData
+doubleEnd
+hello/
+Project1
+Project2
+stackless_coroutine
+taiwan
+world
+yap
+yap2

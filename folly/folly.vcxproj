@@ -63,28 +63,6 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <IncludePath>$(IncludePath);$(ISenseIncludePath);D:\src\linux_include\include;D:\src\linux_include\local_include</IncludePath>
   </PropertyGroup>
-  <ItemGroup>
-    <ClCompile Include="applyTuple.cpp" />
-    <ClCompile Include="constexpr_Math.cpp" />
-    <ClCompile Include="event_base.cpp" />
-    <ClCompile Include="log.cpp" />
-    <ClCompile Include="maputil.cpp" />
-    <ClCompile Include="mpmcPipe.cpp" />
-    <ClCompile Include="mpmcQueue.cpp" />
-    <ClCompile Include="overload.cpp" />
-    <ClCompile Include="prioritympmc.cpp" />
-    <ClCompile Include="ProducerConsumerQueue.cpp" />
-    <ClCompile Include="ScopeGuard.cpp" />
-    <ClCompile Include="small_vector_test.cpp" />
-    <ClCompile Include="sorted_vector.cpp" />
-    <ClCompile Include="sparseByteSet.cpp" />
-    <ClCompile Include="sync.cpp" />
-    <ClCompile Include="TimeoutQueue.cpp" />
-    <ClCompile Include="varint.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="small_vector_test.h" />
-  </ItemGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <CppLanguageStandard>gnu++1y</CppLanguageStandard>

@@ -27,9 +27,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{e6cbd3cf-adc6-460a-a281-a99ba35fe543}</ProjectGuid>
+    <ProjectGuid>{3e0e795b-c2d1-44ac-adbc-52dd3745b6d3}</ProjectGuid>
     <Keyword>Linux</Keyword>
-    <RootNamespace>folly</RootNamespace>
+    <RootNamespace>boost</RootNamespace>
     <MinimumVisualStudioVersion>15.0</MinimumVisualStudioVersion>
     <ApplicationType>Linux</ApplicationType>
     <ApplicationTypeRevision>1.0</ApplicationTypeRevision>
@@ -61,16 +61,12 @@
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(IncludePath);$(ISenseIncludePath);D:\src\linux_include\include\x86_64-linux-gnu;D:\src\linux_include\include;D:\src\linux_include\local_include</IncludePath>
+    <IncludePath>$(IncludePath);$(ISenseIncludePath);D:\src\linux_include\include;D:\src\linux_include\local_include</IncludePath>
   </PropertyGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <ClCompile>
-      <CppLanguageStandard>gnu++1y</CppLanguageStandard>
-    </ClCompile>
-    <Link>
-      <LibraryDependencies>pthread;folly;glog;double-conversion;boost_system;boost_thread;follybenchmark</LibraryDependencies>
-    </Link>
-  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="polycollection.cpp" />
+  </ItemGroup>
+  <ItemDefinitionGroup />
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />
 </Project>

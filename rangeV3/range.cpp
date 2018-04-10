@@ -6,6 +6,7 @@
 #include <string>
 
 
+using namespace ranges;
 void viewA()
 {
   using namespace ranges;
@@ -126,6 +127,7 @@ void product()
     }
   }
 }
+//issue:1
 void counted()
 {
   std::vector<int> vcpa{1,2,3};
@@ -137,6 +139,7 @@ void counted()
   }
   std::cout<<" ==== \n";
 }
+//issue:2
 void cycle()
 {
   std::vector<int> vcpa{1,2,3};

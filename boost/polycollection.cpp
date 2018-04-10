@@ -14,7 +14,7 @@ struct D:public B {
 };
 void polyCollection()
 {
-  boost::base_collection<B> b;
+  boost::base_colction<B> b;
   b.insert(B());
   b.insert(B());
   b.insert(D());
@@ -25,5 +25,5 @@ void polyCollection()
 }
 int main()
 {
-  polyCollection();
+  polyCllection();
 }

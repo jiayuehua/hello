@@ -3,7 +3,10 @@
 #include <iostream>
 #include <string>
 #include <assert.h>
+#include <type_traits>
 namespace hana = boost::hana;
+namespace traits = hana::traits;
+
 using namespace hana::literals;
 struct Fish {
   std::string name;
@@ -28,7 +31,7 @@ void f()
 {
   auto t = hana::make_tuple(hana::type_c<int*>, hana::type_c<double>, hana::type_c<float>);
   auto tb = hana::make_tuple(hana::type_c<double>, hana::type_c<float>);
-  auto r = hana::filter(t, [](auto a){ return !hana::traits::is_pointer(a);});
+  auto r = hana::filter(t, [](auto a){ return !traits::is_pointer(a);});
 
   static_assert(r == tb,"");
   std::cout<<"call f\n";
@@ -42,7 +45,6 @@ hana_find()
 
   static_assert(no == hana::nothing,"");
   static_assert(y == hana::just(2_c),"");
-  //hana::find(t, 3);
 }
 constexpr decltype(0_c) fadd()
 {
@@ -53,7 +55,7 @@ constexpr decltype(auto) fadd(TL t,T... arg)
 {
   return t + fadd(arg...);
 }
-void hana_function()
+void hana_algo()
 {
   auto t = hana::make_tuple(1, 1, 2, 2, 3, 3, 2.5, -5);
   std::cout<<"line: "<<__LINE__<<std::endl;
@@ -75,7 +77,7 @@ void hana_function()
   hana::for_each(hfill, [](auto a){std::cout<<a<<std::endl;});
 
   std::cout<<"line: "<<__LINE__<<std::endl;
-  //auto hfind = hana::find(t, 3_c);
+  //hana::find(t, 3);
   //static_assert (hfind == hana::just(3), "find fail");
 
   //std::cout<<"line: "<<__LINE__<<std::endl;
@@ -125,7 +127,7 @@ void hana_function()
   static_assert(tgInsert ==  hana::make_tuple(32_c, 1_c, 1_c, 2_c, 2_c, 3_c, 3_c));
   auto tda = hana::insert_range(t, 0_c, hana::make_tuple(32,3) );
   assert(tda ==  hana::make_tuple(32, 3,1, 1, 2, 2, 3, 3, 2.5, -5));
-  hana::index_if(tg, hana::traits::is_pointer);
+  hana::index_if(tg, traits::is_pointer);
   auto i_if = hana::index_if(t, hana::is_a<int>);
   static_assert(i_if== hana::just(hana::size_c<0>),"");
   std::cout<<decltype(7_c)::value<<std::endl;
@@ -194,13 +196,11 @@ void hana_function()
   std::cout<<"line: "<<__LINE__<<std::endl;
   std::cout<<hana::count_if(tc,  [](auto a) { return a == 3; } )<<std::endl;*/
 }
-
 template <int N>
 void Func(){}
-
 void fun()
 {
-  int a = 1;
+  //int a = 1;
   //Func<a>();
   auto t = hana::make_tuple(1,5.5, "hello");
   hana::for_each(t, [&](auto member){std::cout<<member<<std::endl;});
@@ -213,9 +213,56 @@ void fun()
   auto r = hana::make<hana::range_tag>(hana::int_c<3>, hana::int_c<10>);
   static_assert(r == hana::make_range(hana::int_c<3>, hana::int_c<10>), "");
 }
+template <int F, int T>
+constexpr hana::range<int, F,T>  irange_c {};
+
+void hana_container()
+{
+  static_assert(irange_c<10,100>[0_c] == 10_c, "");
+  static_assert(hana::front(irange_c<0,10>) == 0_c,"");
+  static_assert(hana::find(irange_c<0,10>, 1_c) == hana::just(1_c),"");
+  static_assert(irange_c<1,10> == irange_c<1,10>,"" );
+  static_assert(irange_c<3,10> != irange_c<1,10>,"" );
+}
+template<class T>
+std::enable_if_t<
+  decltype( traits::is_class(hana::type_c<T>))::value> f()
+{
+  std::cout<<"class"<<std::endl;
+}
+template<class T>
+std::enable_if_t<
+  decltype( traits::is_fundamental(hana::type_c<T>))::value> f() {
+  std::cout<<"fundamental"<<std::endl;
+}
+void hana_type()
+{
+  auto StdUnsignedInts = hana::tuple_t<unsigned char, unsigned short int,unsigned int, unsigned long int> ;
+  auto is = traits::is_unsigned(hana::type_c<unsigned int>)&&traits::is_fundamental(hana::type_c<unsigned int>);
+  static_assert(is, "unsigned ");
+  auto r = hana::contains(StdUnsignedInts, hana::type_c<unsigned int>);
+  static_assert(r, "contains ");
+}
+
+class A{};
+struct Bar {
+};
+struct Foo {
+  int mem[4];
+};
+void hana_valid()
+{
+  auto has_mem = hana::is_valid([](auto a)->hana::type<decltype(traits::declval(a).mem)>{} );
+  auto bar_has = has_mem(hana::type_c<Bar>);
+  auto Foo_has = has_mem(hana::type_c<Foo>);
+  static_assert(Foo_has, "");
+
+}
 int main()
 {
-  hana_function();
+  //hana_algo();
+  f<int>();
+  f<A>();
   //transformF();
   //f();
   //fun();

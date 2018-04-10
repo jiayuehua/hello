@@ -55,14 +55,28 @@ void utility()
 
   }
 }
+template<class T>
+decltype(auto) f(T&& t)
+{
+  decltype(auto) tb = std::forward<T>(t);
+  return tb;
+}
 
 int main()
 {
 
   //utility();
+  std::unique_ptr<int> up(new int{30});
+  decltype(auto) upd = f(up);
+  decltype(auto) upd2 = f(std::make_unique<int>(42));
+  std::cout<<*upd2<<std::endl;
 
 
-  //auto&& y = folly::Identity()(std::make_unique<int>(42));
+  auto&& ya = folly::Identity()(std::make_unique<int>(42));
+  decltype(auto) yb = folly::Identity()(std::make_unique<int>(42));
+  decltype(auto) yc = folly::Identity()(up);
+
+  //std::cout<<*ya<<std::endl;
   std::unique_ptr<int> p(new int(42));
 
   auto&& y = std::move(p);

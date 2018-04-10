@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Struct Name="BA" Collapsed="true">
+    <Position X="8" Y="0.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>typetraits.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="BB" Collapsed="true">
+    <Position X="3.5" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>typetraits.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="DD" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="2" />
+    <InheritanceLine Type="BA" ManuallyRouted="true">
+      <Path>
+        <Point X="9" Y="1.309" />
+        <Point X="9" Y="4.132" />
+        <Point X="1.5" Y="4.132" />
+        <Point X="1.5" Y="1.75" />
+      </Path>
+    </InheritanceLine>
+    <InheritanceLine Type="BB" ManuallyRouted="true">
+      <Path>
+        <Point X="4.5" Y="1.059" />
+        <Point X="4.5" Y="1.271" />
+        <Point X="1.5" Y="1.271" />
+        <Point X="1.5" Y="1.75" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>typetraits.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Font Name="Microsoft YaHei" Size="9" />
+</ClassDiagram>

@@ -27,12 +27,12 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="utility.cpp" />
+    <ClCompile Include="channel_zip.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{e6cbd3cf-adc6-460a-a281-a99ba35fe543}</ProjectGuid>
+    <ProjectGuid>{82023719-1adb-457a-90a9-b4c9bc389fe8}</ProjectGuid>
     <Keyword>Linux</Keyword>
-    <RootNamespace>folly</RootNamespace>
+    <RootNamespace>stlab</RootNamespace>
     <MinimumVisualStudioVersion>15.0</MinimumVisualStudioVersion>
     <ApplicationType>Linux</ApplicationType>
     <ApplicationTypeRevision>1.0</ApplicationTypeRevision>
@@ -64,14 +64,14 @@
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(IncludePath);$(ISenseIncludePath);D:\src\linux_include\include\x86_64-linux-gnu;D:\src\linux_include\include;D:\src\linux_include\local_include</IncludePath>
+    <IncludePath>$(IncludePath);$(ISenseIncludePath);D:\src\linux_include\include;D:\src\linux_include\local_include;d:\src\linux_include\include\x86_64-linux-gnu\</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <CppLanguageStandard>gnu++1y</CppLanguageStandard>
+      <CppLanguageStandard>c++1y</CppLanguageStandard>
     </ClCompile>
     <Link>
-      <LibraryDependencies>pthread;folly;glog;double-conversion;boost_system;boost_thread;follybenchmark</LibraryDependencies>
+      <LibraryDependencies>pthread</LibraryDependencies>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
